@@ -59,8 +59,12 @@ yarn server # http://localhost:8080
 - you can delete and create tests folders
 - you can add/remove/update screenshots in `after/` directory
 - and when you finished the updates, you can create or update `test-description.json` (in case of an update you are likely to just modify the runId)
+
 This is the update of this file wich will trigger the run of the visual comparison.
 All those operations can be done live, but for the init, if you have a lot of tests you don't want to re-run, it is better to init and then start the server (concurrency limits are manage only during server initialisation, this could be improved, be re-running tests seems the easiest solution)
+
+**To push those modifications on the server** the easiest way is to store the screenshots local on the machine where tests are run. Those would be stored in the same directory structure. And when tests are done, run a synchronisation with a tool such as rsync. This synchronisation can be done in two steps : first the screenshots (`/after`) and then the `test-description.json` file.
+
 
 ## Development
 
