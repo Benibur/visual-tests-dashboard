@@ -55,6 +55,10 @@ resultsViewCtrler.init = ()=>{
       row = document.createElement('tr')
       row.innerHTML = rowTemplate(test)
       tableBody.appendChild(row)
+      gotoReport = (testId) => {
+        return () => window.location = '/tests/' + testId
+      }
+      row.addEventListener('click', gotoReport(test.testId), false)
     }
   }
 
