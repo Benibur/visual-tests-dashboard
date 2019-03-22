@@ -1,4 +1,4 @@
-                    # Visual tests dashboard
+# Visual tests dashboard
 
 ## What is this ?
 This is a node.js server providing :
