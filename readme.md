@@ -1,4 +1,4 @@
-# Visual tests dashboard
+                    # Visual tests dashboard
 
 ## What is this ?
 This is a node.js server providing :
@@ -12,7 +12,7 @@ This is a node.js server providing :
 Prerequisites : node, yarn, webpack (installed globally)
 ```shell
 yarn
-yarn test:init #
+yarn test:init # initiate a ./public with data for test & demo
 yarn server:dev # http://localhost:8080
 ```
 ### For production
@@ -61,3 +61,23 @@ yarn server # http://localhost:8080
 - and when you finished the updates, you can create or update `test-description.json` (in case of an update you are likely to just modify the runId)
 This is the update of this file wich will trigger the run of the visual comparison.
 All those operations can be done live, but for the init, if you have a lot of tests you don't want to re-run, it is better to init and then start the server (concurrency limits are manage only during server initialisation, this could be improved, be re-running tests seems the easiest solution)
+
+## Development
+
+### Code structure
+The service is composed of 3 mains parts :
+1. the nodejs server (expressjs) : `./src-server/server.js`
+2. the dashboard web page, a simple page made of jade templates in `./src-dashboard/main.js` and served from `./src-dashboard/public`
+3. the test report, a vue.js application in `./src-server/report`, built and pushed in `./public/[]-[]/index.html`
+
+
+### All the commands :
+```bash
+yarn server          # starts the server
+yarn server:dev      # start server in watch mode
+yarn report:build    # builds the report
+yarn report:dev      # builds the report in watch mode
+yanr dashboard:build # builds the dashboard
+yanr dashboard:dev   # builds the dashboard in watch mode
+yarn test:init       # copy ./test/public in ./public
+```
