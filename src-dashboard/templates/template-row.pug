@@ -1,0 +1,10 @@
+td.collapsing 
+  a(href='/tests/'+testId) #{seq}
+td.collapsing.center.aligned
+  if isError
+    i.large.red.icon.close
+  else if hasNew
+    i.large.blue.icon.file
+  else
+    i.large.green.icon.checkmark
+td #{title}
