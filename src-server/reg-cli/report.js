@@ -21,7 +21,7 @@ const encodeFilePath = filePath => {
 
 const createJSONReport = params => {
   return {
-    chrono: params.testChrono,
+    runId: params.testChrono,
     testId: params.testId,
     isError: params.failedItems.length > 0,
     failedItems: params.failedItems,

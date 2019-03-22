@@ -53,7 +53,7 @@ app.post('/tests/:testId/set-as-reference/:filename', function(req, res) {
   catch (e) {}
   finally {
     console.log('file moved, ow re-scan the directory');
-    scanTest('public/'+req.params.testId, true)   // update the comparison TODO : differ in the case where a scan is in progress
+    scanTest('public/'+req.params.testId, true)   // update the comparison TODO : delay in the case where a scan is in progress
     .then(()=>{
       res.send(true)
     })
@@ -107,12 +107,12 @@ function scanTest(dirPath, force) {
     comparisonDescription = JSON.parse(fs.readFileSync(path, 'utf8'))
   }
   testDescription = JSON.parse(fs.readFileSync(dirPath+'/test-description.json', 'utf8'))
-  // check if the comparison has already been done (test and comparison must have the same chrono)
+  // check if the comparison has already been done (test and comparison must have the same runId)
   // if not, then run a comparison
-  if ((comparisonDescription.chrono != testDescription.chrono) || force) {
-    console.log('visual Comparison required for', dirPath, testDescription.chrono)
+  if ((comparisonDescription.runId != testDescription.runId) || force) {
+    console.log('visual Comparison required for', dirPath, testDescription.runId)
     scanInProgress++
-    var promise = visualCompare(dirPath, testDescription.chrono, testDescription.testId)
+    var promise = visualCompare(dirPath, testDescription.runId, testDescription.testId)
     promise.then((result)=>{
         comparisonDescription.isError = result.isError
         testDescription.isError = result.isError

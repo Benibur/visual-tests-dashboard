@@ -59,7 +59,7 @@ const IMAGE_FILES = '/**/*.+(tiff|jpeg|jpg|gif|png|bmp)';
 //     },
 //   });
 
-function visualCompare(dirPath, testChrono, testId) {
+function visualCompare(dirPath, runId, testId) {
 
   console.log('Tests visuels de', dirPath);
 
@@ -81,7 +81,7 @@ function visualCompare(dirPath, testChrono, testId) {
     update                                 ,
     report                                 ,
     json                                   ,
-    testChrono                             ,
+    runId                                  ,
     testId                                 ,
     urlPrefix                              ,
     matchingThreshold: Number(0)           ,
