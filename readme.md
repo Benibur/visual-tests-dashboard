@@ -81,3 +81,19 @@ yanr dashboard:build # builds the dashboard
 yanr dashboard:dev   # builds the dashboard in watch mode
 yarn test:init       # copy ./test/public in ./public
 ```
+
+### Typical development workflow
+```bash
+yarn test:init
+# in another shell
+yarn report:dev
+# in another shell
+yarn dashboar:dev
+# in another shell
+yarn server:dev
+# now let's code
+# and from time to time re initi process : kill your server and :
+yarn test:init
+#  repeat as many times as you want :-)
+
+```
